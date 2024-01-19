@@ -1,0 +1,20 @@
+CC = g++
+CFlags = -Wall -g
+Objects = Libro.o Biblioteca.o main.o
+Libs = -lm
+
+Salida	:	main.o Libro.o Biblioteca.o
+		$(CC) -o Biblioteca_Libro $(Objects) $(Libs)
+		rm main.o Libro.o Biblioteca.o
+
+main.o	:	main.cpp Biblioteca.h
+		$(CC) $(CFlags) -c main.cpp
+
+Biblioteca.o	:	Libro.h Biblioteca.cpp Biblioteca.h
+				$(CC) $(CFlags) -c Biblioteca.cpp
+
+Libro.o		:	Libro.cpp Libro.h
+			$(CC) $(CFlags) -c Libro.cpp
+
+Clear 	:
+		rm Biblioteca_Libro

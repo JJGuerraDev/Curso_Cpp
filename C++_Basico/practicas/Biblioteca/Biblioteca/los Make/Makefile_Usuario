@@ -1,0 +1,17 @@
+CC = g++
+CFLAGS = -Wall -g
+OBJECTS = Usuario.o main.o
+LIBS = -lm
+
+Salida		:	main.o Usuario.o
+			$(CC) -o Usuario $(OBJECTS) $(LIBS)
+			rm main.o Usuario.o
+
+main.o		:	main.cpp Usuario.h
+			$(CC) $(CFLAGS) -c main.cpp
+
+Usuario.o	:	Usuario.cpp Usuario.h 
+			$(CC) $(CFLAGS) -c Usuario.cpp
+
+clean		:
+			rm Usuario
